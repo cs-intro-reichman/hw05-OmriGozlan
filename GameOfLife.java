@@ -149,24 +149,15 @@ public class GameOfLife {
 	public static int count(int[][] board, int i, int j) {
 		//// Replace the following statement with your code.
 		int count =0;
-		if( board[i][j+1] == 1){
-			count ++;
-		} else if (board[i][j-1] == 1) {
-			count++;
-		} else if (board[i-1][j] == 1) {
-			count++;
-		} else if (board[i-1][j-1] == 1) {
-			count++;
-		} else if (board[i-1][j+1] == 1) {
-			count++;
-		} else if (board[i+1][j] == 1) {
-			count++;
-		} else if (board[i+1][j-1] == 1) {
-			count++;
-		} else if (board[i+1][j+1] == 1) {
-			count++;
-		}
-		return count;
+		 if( board[i][j+1] == 1) count ++;
+		 if (board[i][j-1] == 1) count++;
+		 if (board[i-1][j] == 1) count++;
+		 if (board[i-1][j-1] == 1)count++;
+		 if (board[i-1][j+1] == 1) count++;
+		 if (board[i+1][j] == 1) count++;
+		 if (board[i+1][j-1] == 1) count++;
+		 if (board[i+1][j+1] == 1) count++;
+		 return count;
 	}
 
 	// Prints the board. Alive and dead cells are printed as 1 and 0, respectively.
