@@ -103,6 +103,7 @@ public class GameOfLife {
 	// Uses the cellValue(board,i,j) function to compute the value of each 
 	// cell in the new board. Returns the new board.
 	public static int[][] evolve(int[][] board) {
+
 		int N = board.length;
 		int M = board[0].length;
 		int[][] res = new int[N][M];
@@ -127,9 +128,9 @@ public class GameOfLife {
 		//// Replace the following statement with your code.
 		int cellValue = board[i][j];
 		if (cellValue == 1 ) {
-			if(count(board,i,i) < 2) {
+			if(count(board,i,j) < 2) {
 				cellValue = 0;
-			} else if (count(board,i,i) > 3) {
+			} else if (count(board,i,j) > 3) {
 				cellValue = 0;
 			}
 		} else {
