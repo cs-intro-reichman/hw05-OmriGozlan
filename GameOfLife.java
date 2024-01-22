@@ -10,7 +10,7 @@ public class GameOfLife {
 	public static void main(String[] args) {
 		String fileName = args[0];
 		//// Uncomment the test that you want to execute, and re-compile.
-		//// (Run one test at a time).
+		// (Run one test at a time).
 		 test1(fileName);
 		 //test2(fileName);
 		//// test3(fileName, 3);
@@ -75,30 +75,28 @@ public class GameOfLife {
 		In in = new In(fileName); // Constructs an In object for reading the input file
 		int rows = Integer.parseInt(in.readLine());
 		int cols = Integer.parseInt(in.readLine());
-		int[][] board = new int[rows + 2][cols + 2];
-		for(int i= 1 ; i< board.length-1 ; i++){
+		int[][] board = new int[rows+2][cols+2];
+		for (int i = 1; i <= rows; i++) {
 			String line = in.readLine();
-			for(int j = 1; j < board[0].length-1; j++){
-				if(line.isEmpty()){
+			if (line.isEmpty()) {
+				for (int j = 1; j <= cols-1; j++) {
 					board[i][j] = 0;
-				} else {
-					int index = 0;
-					for (int k = 0; k < line.length(); k++) {
-						if ((line.charAt(k) != 'x') && (k > index)) {
-							board[i][j] = 0;
-							index = k;
-							break;
-						} else if (k > index) {
-							board[i][j] = 1;
-							index = k;
-							break;
-						}
+				}
+			} else {
+				int index = -1;
+				for (int j = 1; j <= cols-1; j++) {
+					char currentChar = (j <= line.length()) ? line.charAt(j - 1) : 'x';
+					if (currentChar == 'x' && j > index) {
+						board[i][j] = 1;
+						index = j;
+					} else {
+						board[i][j] = 0;
 					}
 				}
 			}
 		}
 		return board;
-		}
+	}
 		//// Replace the following statement with your code.
 
 	// Creates a new board from the given board, using the rules of the game.
@@ -172,8 +170,8 @@ public class GameOfLife {
 
 	// Prints the board. Alive and dead cells are printed as 1 and 0, respectively.
     public static void print(int[][] arr) {
-		for (int i=0 ; i<arr.length ; i++){
-			for (int j=0 ; j<arr[0].length ; j++){
+		for (int i=1 ; i<arr.length-1 ; i++){
+			for (int j=1 ; j<arr[0].length-1 ; j++){
 				System.out.printf("%3s",arr[i][j]);
 			}
 			System.out.println();
