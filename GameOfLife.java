@@ -78,32 +78,25 @@ public class GameOfLife {
 		int[][] board = new int[rows+2][cols+2];
 		for (int i = 1; i <= rows; i++) {
 			String line = in.readLine();
-			if (line.isEmpty()) {
-				for (int j = 1; j <= cols-1; j++) {
+			if (line == null) {
+				for (int j = 1; j <= cols; j++) {
 					board[i][j] = 0;
 				}
 			} else {
-				int index = -1;
-				for (int j = 1; j <= cols-1; j++) {
-					char currentChar = (j <= line.length()) ? line.charAt(j - 1) : 'x';
-					if (currentChar == 'x' && j > index) {
-						board[i][j] = 1;
-						index = j;
-					} else {
-						board[i][j] = 0;
-					}
+				for (int j = 1; j <= cols; j++) {
+					char currentChar = (j <= line.length()) ? line.charAt(j - 1) : '.';
+					board[i][j] = (currentChar == 'x') ? 1 : 0;
 				}
 			}
 		}
 		return board;
 	}
-		//// Replace the following statement with your code.
+
 
 	// Creates a new board from the given board, using the rules of the game.
 	// Uses the cellValue(board,i,j) function to compute the value of each 
 	// cell in the new board. Returns the new board.
 	public static int[][] evolve(int[][] board) {
-
 		int N = board.length;
 		int M = board[0].length;
 		int[][] res = new int[N][M];
