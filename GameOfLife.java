@@ -120,16 +120,14 @@ public class GameOfLife {
 	public static int cellValue(int[][] board, int i, int j) {
 		//// Replace the following statement with your code.
 		int cellValue = board[i][j];
-		if (cellValue == 1 ) {
-			if(count(board,i,j) < 2) {
-				cellValue = 0;
-			} else if (count(board,i,j) > 3) {
-				cellValue = 0;
-			}
-		} else {
-			if ((count(board, i, j) == 3)){
-				cellValue = 1;
-			}
+		if ((cellValue == 1) && ((count(board,i,j) < 2)|| (count(board,i,j) > 3))) {
+			cellValue = 0;
+		}
+		if(cellValue == 1 && (count(board,i,j) == 2 || count(board,i,j) == 3)){
+			cellValue = 1;
+		}
+		if (cellValue == 0 && count(board,i,j) == 3){
+			cellValue = 1;
 		}
 
 		return cellValue;
